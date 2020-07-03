@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'redcarpet'
 gem 'image_processing', '~> 1.0'
 gem 'devise'
+gem 'diffy'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
