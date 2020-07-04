@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @suggestions = Suggestion.find_by(post: @post)
+    @difference = Diffy::Diff.new(@post.suggestions.last.content, @post.content).to_s(:html)
   end
 
   # GET /posts/new

@@ -24,11 +24,12 @@ class SuggestionsController < ApplicationController
   # POST /suggestions
   # POST /suggestions.json
   def create
+    # render plain: params.inspect
     @suggestion = Suggestion.new(suggestion_params)
 
     respond_to do |format|
       if @suggestion.save
-        format.html { redirect_to @suggestion, notice: 'Suggestion was successfully created.' }
+        format.html { redirect_to @suggestion.post, notice: 'Suggestion was successfully created.' }
         format.json { render :show, status: :created, location: @suggestion }
       else
         format.html { render :new }

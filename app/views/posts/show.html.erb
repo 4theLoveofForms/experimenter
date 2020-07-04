@@ -12,3 +12,22 @@
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<%= form_with scope: :suggestion, url:suggestions_path, local: true do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.submit %>
+<% end %>
+
+<p>
+  <%= '<br />' %>
+  <%= '<br />'.html_safe %>
+</p>
+
+<% @post.suggestions.each do |suggestion| %>
+  <p><%= suggestion.content %></p>
+
+  <div >
+    difference: <%=  Diffy::Diff.new(suggestion.content, @post.content).to_s(:html_simple).html_safe %>
+  </div>
+<% end %>
